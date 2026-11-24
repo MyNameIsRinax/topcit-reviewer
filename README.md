@@ -2,6 +2,8 @@
 
 A free reviewer for the **TOPCIT** (Test of Practical Competency in IT) periodic test on **Thursday, 26 November 2026**. It follows the official syllabus **V4.0E** and test structure from [topcit.or.kr](https://topcit.or.kr/).
 
+### [Open the reviewer →](https://mynameisrinax.github.io/topcit-reviewer/)
+
 ## What's inside
 
 | Section | What it has |
