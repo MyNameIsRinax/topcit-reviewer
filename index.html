@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free TOPCIT reviewer: lessons that follow the official syllabus V4.0E, practice questions with an explanation for every choice, a timed mock exam, written and coding drills, and flashcards.">
+<title>TOPCIT Reviewer</title>
+<link rel="icon" href="img/topcit-logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=2">
+<script>
+  // Light by default; apply a saved choice before the page paints.
+  try {
+    var saved = JSON.parse(localStorage.getItem('topcit_v1') || '{}');
+    var th = saved.settings && saved.settings.theme;
+    if (th === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else if (th === 'system') document.documentElement.removeAttribute('data-theme');
+  } catch (e) { /* storage unavailable */ }
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <a class="logo" href="#home" aria-label="TOPCIT Reviewer home"><img src="img/topcit-logo.svg" width="105" height="26" alt="TOPCIT"></a>
+    </div>
+    <nav class="mainnav" aria-label="Sections">
+      <a href="#home" data-nav="home">Practice</a>
+      <a href="#learn" data-nav="learn">Lessons</a>
+      <a href="#drills" data-nav="drills">Drills</a>
+      <a href="#guide" data-nav="guide">Exam guide</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" type="button" data-act="toggleTheme" aria-label="Switch to dark mode"></button>
+      <button class="icon-btn" id="settingsBtn" type="button" data-act="openSettings" aria-label="Settings"></button>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="wrap"></main>
+
+<footer class="site-foot">
+  <p>An independent reviewer, not affiliated with IITP, KPC or TOPCIT.</p>
+  <p>Questions are original practice items based on the official syllabus V4.0E. Progress is saved only in your browser.</p>
+</footer>
+
+<div id="overlay"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<noscript><p class="wrap">This reviewer needs JavaScript turned on.</p></noscript>
+<script src="js/core.js?v=2"></script>
+<script src="js/m1-lessons.js?v=2"></script>
+<script src="js/m1-practice.js?v=2"></script>
+<script src="js/m2-lessons.js?v=2"></script>
+<script src="js/m2-practice.js?v=2"></script>
+<script src="js/m3-lessons.js?v=2"></script>
+<script src="js/m3-practice.js?v=2"></script>
+<script src="js/m4-lessons.js?v=2"></script>
+<script src="js/m4-practice.js?v=2"></script>
+<script src="js/guide.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+</body>
+</html>
