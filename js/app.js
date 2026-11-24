@@ -466,9 +466,9 @@
   function lessonCard(l) {
     var read = !!S.read[l.id], st = qStats(l.qs);
     return '<a class="card lesson ' + l.m + '" href="#lesson-' + l.id + '">' +
-      '<span class="row-top"><span><b>' + esc(l.title) + '</b><small>Syllabus ' + esc(l.syl) + '</small></span>' + pill(l.m, l.terms.length + ' terms') + '</span>' +
+      '<span class="row-top"><span><b>' + esc(l.title) + '</b><small>Syllabus ' + esc(l.syl) + '</small></span>' + (l.terms.length ? pill(l.m, l.terms.length + ' terms') : '') + '</span>' +
       '<span class="desc">' + esc(l.summary) + '</span>' + meter(pct(st.seen, l.qs.length)) +
-      '<span class="row-foot"><span>' + (read ? '<span class="ok">Read</span>' : 'Not started') + ' · ' + plural(l.qs.length, 'question') + '</span><span class="go">Open' + ic('arrowR') + '</span></span></a>';
+      '<span class="row-foot"><span>' + (read ? '<span class="ok">Read</span>' : 'Not read') + ' · ' + (st.seen ? st.seen + '/' + l.qs.length + ' answered' : plural(l.qs.length, 'question')) + '</span><span class="go">Open' + ic('arrowR') + '</span></span></a>';
   }
   function bindSearch() {
     var input = document.getElementById('q'), out = document.getElementById('searchOut'), listEl = document.getElementById('lessonList');
@@ -494,7 +494,7 @@
     return '<div class="qhead"><a class="icon-btn" href="#learn" aria-label="Back to lessons">' + ic('left') + '</a>' +
         '<div class="titles"><b>' + esc(l.title) + '</b><span>M' + m.n + ' ' + esc(m.name) + ' · Syllabus ' + esc(l.syl) + '</span></div></div>' +
       '<section class="card lesson-hero ' + l.m + '"><p>' + esc(l.summary) + '</p>' +
-        '<div class="lesson-stats"><span>' + plural(l.terms.length, 'key term') + '</span><span>' + plural(l.qs.length, 'practice question') + '</span>' + (ds.length ? '<span>' + plural(ds.length, 'drill') + '</span>' : '') + '</div>' +
+        '<div class="lesson-stats">' + (l.terms.length ? '<span>' + plural(l.terms.length, 'key term') + '</span>' : '') + '<span>' + plural(l.qs.length, 'practice question') + '</span>' + (ds.length ? '<span>' + plural(ds.length, 'drill') + '</span>' : '') + '</div>' +
         '<div class="hero-actions">' +
           (l.qs.length ? '<button class="btn primary" data-act="lessonPractice" data-arg="' + l.id + '">' + ic('bolt') + 'Practice ' + l.qs.length + ' questions</button>' : '') +
           (l.terms.length ? '<button class="btn" data-act="lessonDeck" data-arg="' + l.id + '">' + ic('cards') + 'Flashcards</button>' : '') +

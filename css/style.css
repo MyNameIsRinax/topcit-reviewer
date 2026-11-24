@@ -239,6 +239,7 @@ body.has-bar .mainnav { display: none; }
 
 .pill {
   --tc: var(--brand);
+  flex: 0 0 auto;
   display: inline-flex; align-items: center;
   padding: 3px 10px; border-radius: 99px;
   font-size: 12px; font-weight: 700; white-space: nowrap;
