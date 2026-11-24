@@ -605,7 +605,12 @@ a.qsrc:hover { color: var(--brand); text-decoration: underline; }
 .check-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 14px; font-size: 13.5px; color: var(--muted); }
 .blanks { display: grid; gap: 10px; }
 .blank { display: grid; grid-template-columns: 1fr; gap: 6px; }
-@media (min-width: 640px) { .blank { grid-template-columns: 110px 1fr; align-items: center; } .blank .answer { grid-column: 2; } }
+@media (min-width: 640px) {
+  /* One shared grid per question: the label column is as wide as its longest label. */
+  .blanks { grid-template-columns: max-content minmax(0, 1fr); align-items: center; gap: 8px 14px; }
+  .blank { display: contents; }
+  .blank .answer { grid-column: 2; margin-top: -2px; }
+}
 .blank > span:first-child { font-size: 14px; font-weight: 700; }
 .blank input {
   width: 100%; min-height: 44px; padding: 0 12px;
