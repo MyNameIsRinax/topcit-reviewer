@@ -333,6 +333,8 @@
         '<div class="stat"><b>' + mis + '</b><span>mistakes to review</span></div>' +
         '<div class="stat"><b>' + read + '<small> / ' + lessons.length + '</small></b><span>lessons read</span>' + meter(pct(read, lessons.length)) + '</div>' +
       '</div></section>' + resume +
+      '<div class="notice"><span><b>Short on time?</b> Read the 30-minute quick review, an 8-page PDF of everything.</span>' +
+        '<a class="btn sm primary" href="TOPCIT-Quick-Review.pdf" target="_blank" rel="noopener">' + ic('sheet') + 'Open PDF</a></div>' +
 
       '<section class="section">' + sectionHead('Quick study', 'Short sets that focus on what you still miss') +
         '<div class="tiles">' +
@@ -431,6 +433,7 @@
 
       '<section class="section">' + sectionHead('More', '') +
         '<div class="card links">' +
+          '<a href="TOPCIT-Quick-Review.pdf" target="_blank" rel="noopener">' + icBox('sheet') + '<span><b>30-minute quick review (PDF)</b><small>8 pages: all four modules, every formula, code and SQL to know</small></span>' + ic('right') + '</a>' +
           '<a href="#sheet">' + icBox('sheet') + '<span><b>Cheat sheet</b><small>Formulas and must-know lists for all four modules</small></span>' + ic('right') + '</a>' +
           '<a href="https://topcit.or.kr/board/preview.do" target="_blank" rel="noopener">' + icBox('ext') + '<span><b>Official practice test screen</b><small>IBT simulation, UML/ERD drawing tools, and the C, C++, Java, Python compiler</small></span>' + ic('right') + '</a>' +
           '<a href="https://topcit.or.kr/introduction/syllabus.do" target="_blank" rel="noopener">' + icBox('ext') + '<span><b>Official syllabus V4.0E</b><small>Each lesson here shows its syllabus number</small></span>' + ic('right') + '</a>' +

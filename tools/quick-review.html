@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TOPCIT Quick Review</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --text: #17202b; --muted: #5b6676; --faint: #8691a1; --border: #e1e5ec; --s2: #f1f3f7; --s3: #e5e9f0;
+    --brand: #2756d4; --brand-weak: #eaf0fd; --flag: #9a6a00; --flag-weak: #fff5d9; --ok: #15804a;
+    --m1: #2756d4; --m2: #0f8467; --m3: #7a46c8; --m4: #c0571c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; color: var(--text); background: #e9ecf1; font: 8.3pt/1.33 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+  /* Each page is a fixed A4 sheet, so overflow can be measured on screen before printing. */
+  .page { position: relative; width: 210mm; height: 296mm; margin: 0 auto; padding: 10mm 11mm 12mm; background: #fff; overflow: hidden; display: flex; flex-direction: column; break-after: page; }
+  .page:last-of-type { break-after: auto; }
+  .pn { position: absolute; left: 11mm; right: 11mm; bottom: 5mm; display: flex; justify-content: space-between; color: var(--faint); font-size: 7.3pt; }
+  @media screen { .page { margin: 16px auto; box-shadow: 0 1px 6px rgba(0, 0, 0, .15); } }
+  @media print { body { background: #fff; } }
+  b, strong { font-weight: 650; }
+  code, pre { font-family: Consolas, "Cascadia Mono", ui-monospace, monospace; }
+  code { font-size: .92em; background: var(--s2); padding: 0 3px; border-radius: 3px; }
+
+  .head { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .head img { height: 22px; }
+  .head h1 { margin: 0; font-size: 15pt; letter-spacing: -.01em; }
+  .head p { margin: 0 0 0 auto; color: var(--muted); font-size: 8.5pt; text-align: right; }
+
+  h2.mod { display: flex; align-items: baseline; gap: 8px; margin: 0 0 6px; padding-top: 6px; border-top: 3px solid var(--c); font-size: 13pt; letter-spacing: -.01em; break-after: avoid; }
+  h2.mod small { margin-left: auto; font-size: 8.5pt; font-weight: 500; color: var(--muted); }
+  .m1 { --c: var(--m1); } .m2 { --c: var(--m2); } .m3 { --c: var(--m3); } .m4 { --c: var(--m4); } .mx { --c: var(--brand); }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 8pt; font-weight: 700; color: var(--c); background: color-mix(in srgb, var(--c) 13%, transparent); }
+  .cols { column-count: 2; column-gap: 14px; column-fill: auto; flex: 1 1 auto; min-height: 0; }
+  .cols.balance { column-fill: balance; flex: 0 0 auto; }
+  .box { break-inside: avoid; margin: 0 0 6px; padding: 5px 7px 6px; border: 1px solid var(--border); border-radius: 7px; }
+  .box h3 { margin: 0 0 3px; font-size: 9.4pt; color: var(--c, var(--text)); }
+  .box p { margin: 2px 0; }
+  .box ul { margin: 2px 0; padding-left: 13px; }
+  .box li { margin: 1px 0; }
+  .trap { margin: 3px 0 0; padding: 3px 6px; border-radius: 4px; background: var(--flag-weak); }
+  .trap b:first-child { color: var(--flag); }
+  .muted { color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; margin: 2px 0; font-size: 8pt; line-height: 1.3; }
+  th, td { padding: 1.5px 4px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: var(--s2); color: var(--muted); font-weight: 650; }
+  tr:last-child td { border-bottom: 0; }
+  td.n, th.n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .top { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .plan td:first-child { white-space: nowrap; }
+  pre { margin: 3px 0; padding: 4px 6px; background: var(--s2); border-radius: 5px; font-size: 7.8pt; line-height: 1.32; white-space: pre-wrap; }
+  .foot { margin-top: 6px; color: var(--faint); font-size: 7.5pt; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: EXAM + STRATEGY ================= -->
+<div class="page">
+<div class="head">
+  <img src="../img/topcit-logo.svg" alt="TOPCIT">
+  <h1>Quick review</h1>
+  <p>Syllabus V4.0E · Thursday, 26 November 2026<br>Read it in 30 minutes, top to bottom</p>
+</div>
+
+<div class="top">
+  <div class="box mx">
+    <h3>How to spend the 30 minutes</h3>
+    <table class="plan">
+      <tr><td>2 min</td><td>This page: the exam and how to score</td></tr>
+      <tr><td>7 min</td><td>M1 Software Development (biggest module)</td></tr>
+      <tr><td>6 min</td><td>M2 Data Management</td></tr>
+      <tr><td>6 min</td><td>M3 System Architecture &amp; Security</td></tr>
+      <tr><td>4 min</td><td>M4 IT Business</td></tr>
+      <tr><td>3 min</td><td>Every formula, with a worked number</td></tr>
+      <tr><td>2 min</td><td>Code and SQL to write from memory</td></tr>
+    </table>
+    <p class="muted">Skim bold words first. If time is short, read the "Trap" lines and the formulas page.</p>
+  </div>
+  <div class="box mx">
+    <h3>The exam</h3>
+    <table>
+      <tr><td>Time</td><td>150 minutes. Be seated 20 minutes early.</td></tr>
+      <tr><td>Score</td><td>1,000 points → Level 1 (0–149), 2 (150–399), <b>3 (400–649)</b>, 4 (650–849), 5 (850+). No pass/fail.</td></tr>
+      <tr><td>Points</td><td><b>M1 365</b> · M2 265 · M3 235 · M4 135</td></tr>
+      <tr><td>Types</td><td>Multiple choice 19% · Short answer 12% · Descriptive 21% · <b>Performance 48%</b> (code, SQL, UML/ERD, calculations)</td></tr>
+      <tr><td>Tools</td><td>Calculator, compiler (C, C++, Java, Python), UML/ERD drawing tools</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="top">
+  <div class="box mx">
+    <h3>How to score points</h3>
+    <ul>
+      <li><b>Never leave a written answer blank.</b> 69% of points are descriptive/performance and get partial credit per keyword.</li>
+      <li><b>Sure points first.</b> Answer what you know fast, flag the rest, come back.</li>
+      <li><b>Short numbered points with exact terms</b> ("transitive dependency", "composition", "Little's law").</li>
+      <li><b>Calculations:</b> formula → numbers → answer with unit → one-line meaning ("CPI 0.8 = over budget"). Method earns points even if the final number is off.</li>
+      <li><b>Read "incorrect" in the stem</b> before reading the options.</li>
+      <li><b>Code:</b> use the language you know best. Clear pseudocode beats broken code.</li>
+    </ul>
+  </div>
+  <div class="box mx">
+    <h3>Answer templates for written questions</h3>
+    <table>
+      <tr><td><b>Explain X</b></td><td>Definition → purpose → 2–3 features → example → pros/cons</td></tr>
+      <tr><td><b>Compare A vs B</b></td><td>One line each → small table (purpose, method, pros, cons, use) → when to choose each</td></tr>
+      <tr><td><b>Find problems</b></td><td>Quote the fact → name the problem with the term → consequence. Aim for 3–5.</td></tr>
+      <tr><td><b>Propose a fix</b></td><td>Name the technique → how it works in 2–3 steps → tie to each requirement → one trade-off</td></tr>
+      <tr><td><b>Draw a diagram</b></td><td>Label every element; show multiplicity / guards / start and end nodes; one line explaining it</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="box mx">
+  <h3>Most likely to be tested (based on the syllabus wording and the official sample test)</h3>
+  <p><b>Very likely:</b> SQL (JOIN, GROUP BY/HAVING, subqueries) · ERD and normalization · UML class/activity/use case · reading or writing Java/C/Python · linked list, stack, sorting · test case design · CPM, earned value, availability, TPS/think time, backup strategy.
+  <b>Likely:</b> TCP/UDP, subnetting, crypto and digital signatures, access control (MAC/DAC/RBAC), secure coding, isolation levels, design patterns, cohesion/coupling, <b>AI (new in V4.0E, in all four modules)</b>.
+  <b>Possible:</b> ITIL, cost of quality, risk responses, communication networks, chart types, IP/licensing.</p>
+</div>
+</div>
+
+<!-- ================= M1 ================= -->
+<div class="page">
+<h2 class="mod m1"><span class="pill">M1</span> Software Development <small>365 points · 7 minutes</small></h2>
+<div class="cols m1">
+
+  <div class="box"><h3>Life-cycle models</h3>
+    <table>
+      <tr><td><b>Waterfall</b></td><td>Phases in sequence; clear, stable requirements</td></tr>
+      <tr><td><b>V-model</b></td><td>Requirements↔acceptance, system design↔system test, architecture↔<b>integration</b>, module design↔unit</td></tr>
+      <tr><td><b>Prototyping</b></td><td>Quick model when users are unsure</td></tr>
+      <tr><td><b>Spiral</b></td><td>Cycles with <b>risk analysis</b>; large, risky projects</td></tr>
+      <tr><td><b>RUP</b></td><td>Inception → Elaboration → Construction → Transition</td></tr>
+      <tr><td><b>Agile/Scrum</b></td><td>Sprints 1–4 weeks; change welcomed</td></tr>
+    </table>
+    <p><b>Scrum:</b> Product Owner (orders backlog), Scrum Master (coach, removes blockers), Developers. Artifacts: Product Backlog, Sprint Backlog, Increment. <b>Review</b> = show product to stakeholders; <b>Retrospective</b> = improve the team's process.</p>
+    <p><b>Reverse engineering</b> = code → design, nothing changed. <b>Reengineering</b> = reverse + restructure + forward.</p>
+  </div>
+
+  <div class="box"><h3>Data structures</h3>
+    <ul>
+      <li><b>Stack</b> LIFO (recursion, undo, DFS). <b>Queue</b> FIFO (BFS, scheduling).</li>
+      <li>Binary tree: level i max 2<sup>i−1</sup>; depth k max 2<sup>k</sup>−1; <b>leaves = nodes with 2 children + 1</b>.</li>
+      <li>Traversal of A(B(D,E), C(-,F)): pre A B D E C F · in D B E A C F · <b>post D E B F C A</b>.</li>
+      <li>BST in-order = sorted. Heap = complete tree, parent ≥ children.</li>
+      <li>Infix <code>A*(B+C)-D</code> → postfix <code>A B C + * D -</code>.</li>
+      <li>Hash collisions: chaining or open addressing (linear probing).</li>
+      <li>Doubly linked delete x: <code>x.llink.rlink = x.rlink; x.rlink.llink = x.llink</code></li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Algorithms</h3>
+    <table>
+      <tr><th>Sort</th><th>Average</th><th>Worst</th><th>Stable</th></tr>
+      <tr><td>Bubble / Insertion</td><td>n²</td><td>n²</td><td>Yes</td></tr>
+      <tr><td>Selection</td><td>n²</td><td>n²</td><td>No</td></tr>
+      <tr><td>Quick</td><td>n log n</td><td><b>n²</b></td><td>No</td></tr>
+      <tr><td><b>Merge</b></td><td>n log n</td><td>n log n</td><td><b>Yes</b></td></tr>
+      <tr><td>Heap</td><td>n log n</td><td>n log n</td><td>No</td></tr>
+    </table>
+    <p><b>Binary search:</b> needs sorted data, O(log n), max ⌊log<sub>2</sub>n⌋+1 comparisons (1,000 items → 10).</p>
+    <p><b>Greedy:</b> Kruskal, Prim, Dijkstra. <b>Dynamic programming</b> (stores overlapping subproblems): Floyd-Warshall, knapsack, Fibonacci. <b>Divide and conquer:</b> merge/quick sort. <b>Backtracking:</b> N-Queens.</p>
+  </div>
+
+  <div class="box"><h3>AI (new in V4.0E)</h3>
+    <ul>
+      <li><b>Supervised</b> (labels: classification, regression) · <b>Unsupervised</b> (clustering e.g. K-means) · <b>Reinforcement</b> (rewards).</li>
+      <li><b>Overfitting</b> = memorizes training data. Fix: more data, regularization, dropout, early stopping.</li>
+      <li><b>CNN</b> images · <b>RNN/LSTM</b> sequences · <b>Transformer</b> self-attention, parallel (LLMs) · <b>GAN</b> generator vs discriminator.</li>
+      <li><b>RAG</b> = retrieve documents into the prompt (no retraining). <b>Fine-tuning</b> = retrain weights. <b>Hallucination</b> = confident false output.</li>
+      <li><b>Precision</b> TP/(TP+FP) · <b>Recall</b> TP/(TP+FN). Imbalanced data → don't trust accuracy.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Requirements and analysis</h3>
+    <ul>
+      <li><b>Functional</b> = what it does. <b>Non-functional</b> = how well (performance, security, availability).</li>
+      <li><b>Verification</b> = built right (meets spec). <b>Validation</b> = right product (meets needs).</li>
+      <li>DFD: process (circle), data flow (arrow), data store (two lines), external entity (box).</li>
+      <li>Data dictionary: <code>=</code> composed of, <code>+</code> and, <code>[|]</code> choose, <code>{ }</code> repeat, <code>( )</code> optional.</li>
+      <li><b>«include»</b> always happens (Withdraw includes Authenticate). <b>«extend»</b> optional (Print receipt).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Design: cohesion and coupling</h3>
+    <p><b>Cohesion</b> worst → best: Coincidental, Logical, Temporal, Procedural, Communicational, Sequential (output→input), <b>Functional</b>.</p>
+    <p><b>Coupling</b> worst → best: Content, Common (globals), External, Control (flag), Stamp (whole struct), <b>Data</b>.</p>
+    <p>Goal: <b>high cohesion, low coupling</b>. <b>SOLID:</b> Single responsibility, Open/closed, Liskov, Interface segregation, Dependency inversion.</p>
+    <p><b>MVC</b> = "separate view, processing and business logic". Others: layered, client-server, pipe-and-filter, broker, event-driven, microservices.</p>
+  </div>
+
+  <div class="box"><h3>UML</h3>
+    <ul>
+      <li>Structural: class, object, component, deployment, package. Behavioral: use case, activity, state, <b>sequence, communication, timing</b> (= interaction).</li>
+      <li><b>Aggregation</b> hollow ◇ (parts live alone) · <b>Composition</b> filled ◆ (parts die with whole) · <b>Generalization</b> hollow △ (is-a) · Realization dashed △ · Dependency dashed arrow.</li>
+      <li>Multiplicity is read at the <b>far end</b>: Person 1 — 0..* Order.</li>
+      <li>Activity: start ●, actions, decision ◇ with [guards], fork/join bars, <b>swimlanes</b>, end ◉.</li>
+      <li>Sequence: lifelines, activation bars, sync (filled arrow) vs async, return (dashed), alt/opt/loop.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<h2 class="mod m1"><span class="pill">M1</span> Software Development, continued <small>patterns, testing, maintenance, code</small></h2>
+<div class="cols m1 balance">
+
+  <div class="box"><h3>Design patterns (GoF)</h3>
+    <p><b>Creational:</b> Singleton, Factory Method, Abstract Factory, Builder, Prototype. <b>Structural:</b> Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy. <b>Behavioral:</b> Observer, Strategy, Command, Iterator, Template Method, State, …</p>
+    <table>
+      <tr><td><b>Singleton</b></td><td>One instance, private constructor</td></tr>
+      <tr><td><b>Observer</b></td><td>One change notifies many subscribers</td></tr>
+      <tr><td><b>Strategy</b></td><td>Swap algorithms at run time (client picks)</td></tr>
+      <tr><td><b>Adapter</b></td><td>Convert one interface to another</td></tr>
+      <tr><td><b>Facade</b></td><td>One simple interface to a subsystem</td></tr>
+      <tr><td><b>Decorator</b></td><td>Add behavior by wrapping</td></tr>
+    </table>
+  </div>
+
+  <div class="box"><h3>Testing</h3>
+    <ul>
+      <li>Unit → Integration → System → Acceptance. <b>Alpha</b> at developer's site; <b>Beta</b> at users' sites.</li>
+      <li><b>Stub</b> = fake lower module (top-down). <b>Driver</b> = fake caller (bottom-up).</li>
+      <li>White-box: statement &lt; branch &lt; condition &lt; MC/DC &lt; multiple condition. <b>V(G) = E − N + 2 = decisions + 1.</b></li>
+      <li>Black-box: equivalence partitioning (one value per class), <b>boundary values</b> (18–60 → 17, 18, 19, 59, 60, 61), decision table, state transition.</li>
+      <li><b>Regression</b> = re-test after change. TDD = red → green → refactor.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Maintenance, Git, licenses, MSA</h3>
+    <ul>
+      <li>Maintenance: <b>Corrective</b> (bugs), <b>Adaptive</b> (new OS or law), <b>Perfective</b> (new features, largest share), <b>Preventive</b> (refactor).</li>
+      <li>SCM: identification, version control, change control (CCB), status accounting, audit. <code>git pull</code> = fetch + merge.</li>
+      <li>Licenses: <b>GPL</b> strong copyleft (release source if distributed), AGPL (even as a service), LGPL/MPL weak, <b>MIT/BSD/Apache 2.0</b> permissive.</li>
+      <li>Microservices: API gateway, service discovery, <b>circuit breaker</b> (stop calling a failing service). Containers share the host kernel.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Code-reading traps</h3>
+    <ul>
+      <li>Java: <code>Parent p = new Child()</code> → <b>methods</b> use Child, <b>fields</b> use Parent. <code>==</code> compares references; use <code>equals()</code>. For-each can't change array elements.</li>
+      <li>C: <code>7/2 = 3</code>; <code>*(p+2)</code> = <code>p[2]</code>; <code>i++</code> uses then adds; switch falls through without break.</li>
+      <li>Python: <code>7//2 = 3</code>, <code>-7//2 = -4</code>, <code>2**3 = 8</code>; <code>s[1:4]</code> stops before 4; <code>[::-1]</code> reverses.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ================= M2 ================= -->
+<div class="page">
+<h2 class="mod m2"><span class="pill">M2</span> Data Management <small>265 points · 6 minutes</small></h2>
+<div class="cols m2">
+
+  <div class="box"><h3>Database basics</h3>
+    <ul>
+      <li>3 levels: external (user views) · <b>conceptual</b> (whole DB) · internal (storage).</li>
+      <li><b>Logical independence</b> = external↔conceptual. <b>Physical independence</b> = conceptual↔internal.</li>
+      <li><b>Degree</b> = columns, <b>cardinality</b> = rows. A × B: degrees add, cardinalities multiply.</li>
+      <li><b>Super key</b> unique · <b>Candidate key</b> unique + minimal · PK = chosen candidate, NOT NULL · FK references a PK.</li>
+      <li>Integrity: <b>entity</b> (PK not null/unique), <b>referential</b> (FK matches a PK or is null), domain.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>ERD and modeling</h3>
+    <ul>
+            <li><b>M:N → associative table</b> with both FKs (Student–Enrollment–Course).</li>
+      <li>Chen: entity box, relationship diamond, attribute oval; double oval = multi-valued; dashed = derived; double box = weak entity.</li>
+      <li>Supertype/subtype to tables: one table + type column · subtype tables only · <b>one table per type</b> (subtype PK = supertype PK, also FK).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Normalization</h3>
+    <table>
+      <tr><td><b>1NF</b></td><td>Atomic values</td></tr>
+      <tr><td><b>2NF</b></td><td>No <b>partial</b> dependency (on part of a composite key)</td></tr>
+      <tr><td><b>3NF</b></td><td>No <b>transitive</b> dependency (A→B→C)</td></tr>
+      <tr><td><b>BCNF</b></td><td>Every determinant is a candidate key</td></tr>
+      <tr><td>4NF / 5NF</td><td>No multi-valued / join dependency</td></tr>
+    </table>
+    <p>Anomalies: insertion, deletion, update. Example: ORDER(order_no, prod_id, cust_name, …) → split ORDERS, CUSTOMER, PRODUCT, ORDER_LINE.</p>
+    <p><b>Denormalization</b> = add redundancy for read speed (derived columns, summary tables, merge tables).</p>
+  </div>
+
+  <div class="box"><h3>Indexes and views</h3>
+    <ul>
+      <li><b>B-tree</b> default (equality and ranges) · <b>Bitmap</b> low-cardinality columns in DW · Hash exact match · Clustered = rows stored in order (one per table).</li>
+      <li>Index not used: <code>LIKE '%son'</code>, functions on the column. Indexes slow INSERT/UPDATE/DELETE.</li>
+      <li><b>View</b> = stored query, no data (except materialized); security + logical independence; GROUP BY views not updatable.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>SQL facts</h3>
+    <ul>
+      <li>DDL: CREATE, ALTER, DROP, TRUNCATE · DML: SELECT, INSERT, UPDATE, DELETE · DCL: GRANT, REVOKE · TCL: COMMIT, ROLLBACK, SAVEPOINT.</li>
+      <li>WHERE = selection σ; SELECT list = projection π; ÷ = division ("related to all").</li>
+      <li>Only <b>DELETE</b> can be rolled back. TRUNCATE/DROP auto-commit.</li>
+      <li>Run order: <b>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</b>.</li>
+      <li><b>WHERE</b> filters rows, <b>HAVING</b> filters groups (aggregates).</li>
+      <li>Aggregates ignore NULL except <code>COUNT(*)</code>. AVG(100,200,NULL,300) = 200.</li>
+      <li><code>&gt; ALL</code> = greater than max; <code>&gt; ANY</code> = greater than min.</li>
+      <li>5 emp (1 without dept) × 3 dept (1 empty): inner 4, left 5, full 6, cross 15.</li>
+    </ul>
+    <p class="trap"><b>Trap:</b> <code>NOT IN</code> with a subquery containing NULL returns <b>no rows</b>. Use NOT EXISTS.</p>
+  </div>
+
+  <div class="box"><h3>Transactions and concurrency</h3>
+    <ul>
+      <li><b>ACID:</b> Atomicity (undo), Consistency, <b>Isolation (concurrency control)</b>, Durability (logs).</li>
+      <li><b>Dirty read</b> = uncommitted data · <b>Non-repeatable</b> = same row changes · <b>Phantom</b> = new rows appear · <b>Lost update</b> = overwrite.</li>
+    </ul>
+    <table>
+      <tr><th>Level</th><th>Dirty</th><th>Non-rep.</th><th>Phantom</th></tr>
+      <tr><td>Read uncommitted</td><td>yes</td><td>yes</td><td>yes</td></tr>
+      <tr><td>Read committed</td><td>no</td><td>yes</td><td>yes</td></tr>
+      <tr><td>Repeatable read</td><td>no</td><td>no</td><td>yes</td></tr>
+      <tr><td>Serializable</td><td>no</td><td>no</td><td>no</td></tr>
+    </table>
+    <p><b>2PL</b>: growing then shrinking phase → serializable, but <b>deadlock still possible</b>. Shared locks compatible; exclusive conflicts with all. Deadlock needs mutual exclusion, hold and wait, no preemption, circular wait.</p>
+  </div>
+
+  <div class="box"><h3>Recovery and backup</h3>
+    <ul>
+      <li>Committed after last checkpoint → <b>REDO</b>; not committed → <b>UNDO</b>; committed before → nothing.</li>
+      <li><b>WAL:</b> write the log before the data page.</li>
+      <li><b>2PC:</b> prepare/vote, then commit or abort; any NO → abort all; blocking if coordinator fails.</li>
+      <li>Restore: <b>Differential</b> = full + latest differential. <b>Incremental</b> = full + every incremental in order. <b>Archive logs</b> → point-in-time recovery.</li>
+      <li>24×7 answer: hot backups, weekly full + daily differential + archive logs, off-site copy, test restores.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Data warehouse and mining</h3>
+    <ul>
+      <li>DW (Inmon): subject-oriented, integrated, time-variant, <b>non-volatile</b>.</li>
+      <li>OLTP = current, normalized, many small writes. OLAP = history, denormalized, big reads.</li>
+      <li><b>Star</b> = fact + denormalized dimensions. <b>Snowflake</b> = normalized dimensions (more joins).</li>
+      <li>OLAP: roll-up (coarser), <b>drill-down</b> (finer), slice (one value), dice (ranges), pivot.</li>
+      <li>ETL = extract, transform, load. Data mart = subject subset.</li>
+      <li>A→B: support = P(A∧B), confidence = P(A∧B)/P(A), <b>lift</b> = confidence/P(B) (&gt;1 positive, =1 independent).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Big data, NoSQL, data for AI</h3>
+    <ul>
+      <li>3V: volume, velocity, variety (+ veracity, value). HDFS: NameNode + DataNodes, <b>3 replicas</b>. Spark = in-memory.</li>
+      <li><b>CAP:</b> Consistency, Availability, Partition tolerance (pick 2 during a partition). <b>BASE</b> = eventually consistent.</li>
+      <li>NoSQL: key-value (Redis) · document (MongoDB) · column-family (Cassandra) · <b>graph (Neo4j, social networks)</b>.</li>
+      <li><b>Data lake</b> = raw data, schema-on-read. DW = schema-on-write.</li>
+      <li>Min-max (x−min)/(max−min); z-score (x−mean)/sd; one-hot for categories; <b>vector DB</b> = embeddings + similarity search (RAG).</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ================= M3 ================= -->
+<div class="page">
+<h2 class="mod m3"><span class="pill">M3</span> System Architecture &amp; Information Security <small>235 points · 6 minutes</small></h2>
+<div class="cols m3">
+
+  <div class="box"><h3>Hardware</h3>
+    <ul>
+      <li><b>PC</b> = next instruction address · IR = current instruction · MAR = address · MBR = data.</li>
+            <li>RISC: few simple fixed-length instructions, many registers, easy pipelining. CISC: complex (x86).</li>
+    </ul>
+    <table>
+      <tr><th>RAID</th><th>Method</th><th>Survives</th></tr>
+      <tr><td>0</td><td>Striping</td><td>none</td></tr>
+      <tr><td>1</td><td>Mirroring (50%)</td><td>1</td></tr>
+      <tr><td>5</td><td>Distributed parity, (n−1)/n</td><td>1</td></tr>
+      <tr><td>6</td><td>Double parity</td><td>2</td></tr>
+    </table>
+  </div>
+
+  <div class="box"><h3>Operating systems</h3>
+    <ul>
+      <li>States: new → ready → running → terminated; running → <b>waiting</b> (I/O) → ready; running → ready (<b>timeout</b>).</li>
+      <li>FCFS (convoy) · <b>SJF</b> (lowest average wait, starvation) · SRT · Round Robin (quantum) · Priority (+aging) · <b>HRN = (wait + service)/service</b>.</li>
+      <li>Semaphore: <b>P/wait</b> decrements (may block), <b>V/signal</b> increments.</li>
+      <li>Deadlock avoidance = <b>Banker's algorithm</b> (safe state).</li>
+      <li>Paging → internal fragmentation; segmentation → external. <b>Thrashing</b> = too much paging.</li>
+      <li>Page replacement: FIFO (Belady's anomaly), <b>LRU</b>, OPT (best, theoretical).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Architecture and availability</h3>
+    <ul>
+      <li>3-tier: web server (static) → <b>WAS</b> (logic) → DB.</li>
+      <li>Hypervisor <b>Type 1</b> bare-metal (ESXi, Hyper-V, Xen, KVM) · <b>Type 2</b> hosted (VirtualBox). Containers share the host kernel.</li>
+      <li>Scale up = bigger server; scale out = more servers.</li>
+      <li><b>RTO</b> = max downtime; <b>RPO</b> = max data loss.</li>
+    </ul>
+    <table>
+      <tr><th>DR site</th><th>Recovery</th></tr>
+      <tr><td><b>Mirror</b></td><td>RTO ≈ 0, RPO ≈ 0 (sync, active-active)</td></tr>
+      <tr><td>Hot</td><td>Hours</td></tr>
+      <tr><td>Warm</td><td>Days</td></tr>
+      <tr><td>Cold</td><td>Weeks</td></tr>
+    </table>
+  </div>
+
+  <div class="box"><h3>Cloud</h3>
+    <ul>
+      <li>NIST: on-demand self-service, broad network access, resource pooling, <b>rapid elasticity</b>, measured service.</li>
+      <li><b>IaaS</b> you manage OS + apps · <b>PaaS</b> you manage app + data · <b>SaaS</b> provider runs everything · FaaS = serverless functions.</li>
+      <li><b>Lambda</b> = batch + speed + serving layers. <b>Kappa</b> = stream only.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Cryptography</h3>
+    <ul>
+            <li>Symmetric (AES, DES 56-bit, SEED, ARIA): fast, key-distribution problem. Asymmetric (RSA = factoring, ECC, DH = key exchange).</li>
+      <li><b>Encrypt for secrecy</b> with the receiver's public key. <b>Sign</b> the hash with the <b>sender's private key</b>; verify with sender's public key.</li>
+      <li>Hash (SHA-256): one-way, fixed length. <b>HMAC</b> = integrity + authentication, <b>no non-repudiation</b> (shared key).</li>
+      <li>ECB leaks patterns. Passwords: salt + bcrypt. CA issues X.509 certificates.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Networks</h3>
+    <table>
+      <tr><th>Layer</th><th>PDU</th><th>Device / protocol</th></tr>
+      <tr><td>7–5 Application</td><td>data</td><td>HTTP, DNS, SMTP</td></tr>
+      <tr><td>4 Transport</td><td><b>segment</b></td><td>TCP, UDP, SCTP</td></tr>
+      <tr><td>3 Network</td><td>packet</td><td><b>router</b>, IP, ICMP</td></tr>
+      <tr><td>2 Data link</td><td>frame</td><td><b>switch</b> (MAC)</td></tr>
+      <tr><td>1 Physical</td><td>bit</td><td>hub, repeater</td></tr>
+    </table>
+    <ul>
+      <li><b>TCP</b>: connection, reliable, ordered, flow/congestion control. 3-way: <b>SYN → SYN+ACK → ACK</b>. Close: FIN, ACK, FIN, ACK.</li>
+      <li><b>UDP</b>: connectionless, 8-byte header (DNS, VoIP, streaming). <b>SCTP</b>: 4-way handshake with cookie, multi-homing.</li>
+      <li>RIP distance vector (hops ≤ 15) · <b>OSPF</b> link state, Dijkstra · BGP between ASes.</li>
+      <li>Private: 10/8, 172.16/12, 192.168/16. ARP IP→MAC. DHCP <b>DORA</b>.</li>
+      <li>Ports: 21 FTP · 22 SSH · 23 Telnet · 25 SMTP · 53 DNS · 80 HTTP · 110 POP3 · 143 IMAP · 161 SNMP · 443 HTTPS · 3389 RDP.</li>
+      <li>HTTP 200 OK · 201 Created · 301/302 redirect · <b>401 not logged in · 403 not allowed</b> · 404 · 500 · 503.</li>
+      <li>IoT: <b>MQTT</b> publish/subscribe via broker; CoAP over UDP. <b>SDN</b> separates control/data plane; NFV = network functions as software.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Authentication and access control</h3>
+    <ul>
+      <li>MFA = different factor types (know + have + are). Password + PIN is not MFA. FAR vs FRR; lower <b>CER</b> = better.</li>
+      <li>Kerberos: AS issues <b>TGT</b>, TGS issues service tickets. <b>OAuth 2.0</b> = authorization (access token); <b>OIDC</b> = authentication (ID token).</li>
+    </ul>
+    <table>
+      <tr><td><b>DAC</b></td><td>Owner decides (ACLs)</td></tr>
+      <tr><td><b>MAC</b></td><td>Labels and clearances; high security, military/space. Bell-LaPadula: <b>no read up, no write down</b></td></tr>
+      <tr><td><b>RBAC</b></td><td>Permissions by role; orgs with frequent staff changes</td></tr>
+      <tr><td>ABAC</td><td>Rules on attributes (user, time, place)</td></tr>
+    </table>
+    <p>Biba (integrity): no read down, no write up. Least privilege, separation of duties.</p>
+  </div>
+
+  <div class="box"><h3>Security management</h3>
+    <ul>
+      <li><b>ISO/IEC 27001</b> = certifiable ISMS (PDCA, 93 controls in 4 themes). 27002 = guidance. Korea: ISMS-P. NIST CSF 2.0: Govern, Identify, Protect, Detect, Respond, Recover.</li>
+      <li>Risk treatment: <b>avoid</b>, <b>transfer</b> (insurance), <b>mitigate</b>, <b>accept</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Attacks and defenses</h3>
+    <table>
+      <tr><td><b>SQL injection</b></td><td>PreparedStatement / bound parameters</td></tr>
+      <tr><td><b>XSS</b> (script in page)</td><td>Output encoding, CSP, HttpOnly cookies</td></tr>
+      <tr><td><b>CSRF</b> (forged request)</td><td>Anti-CSRF token, SameSite cookies</td></tr>
+      <tr><td>SYN flood</td><td>SYN cookies</td></tr>
+      <tr><td>Smurf</td><td>ICMP to broadcast; disable directed broadcast</td></tr>
+      <tr><td>ARP spoofing</td><td>MITM on LAN; static ARP, DAI</td></tr>
+      <tr><td>Buffer overflow</td><td>Bounds checks, canaries, ASLR, DEP</td></tr>
+    </table>
+    <ul>
+      <li>IDS alerts; <b>IPS blocks inline</b>; WAF for web. IPsec: <b>AH no encryption</b>, <b>ESP encrypts</b>. Zero trust = never trust, always verify.</li>
+      <li>AI attacks: adversarial examples, data poisoning, <b>prompt injection</b>.</li>
+      <li>Cloud shared responsibility: in IaaS the <b>customer patches the guest OS</b>.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ================= M4 ================= -->
+<div class="page">
+<h2 class="mod m4"><span class="pill">M4</span> IT Business <small>135 points · 4 minutes</small></h2>
+<div class="cols m4">
+
+  <div class="box"><h3>Strategy models</h3>
+    <ul>
+      <li><b>Value chain</b> primary: inbound logistics, operations, outbound, marketing &amp; sales, service. Support: infrastructure, HR, technology, <b>procurement</b>.</li>
+      <li><b>Five Forces:</b> rivalry, new entrants, substitutes, buyer power, supplier power. (Regulation is PEST, not Five Forces.)</li>
+      <li><b>SWOT → TOWS:</b> SO (attack), ST (strength vs threat), WO (fix weakness via opportunity), WT (defend).</li>
+      <li><b>BCG:</b> Star (high growth, high share), <b>Cash cow</b> (low growth, high share), Question mark (high growth, low share), Dog.</li>
+      <li><b>Ansoff:</b> penetration, market development, <b>product development</b> (new product, same market), diversification.</li>
+      <li>Porter generic: cost leadership, differentiation, focus. <b>BSC:</b> financial, customer, internal process, learning &amp; growth.</li>
+      <li><b>ISP:</b> environment analysis → As-Is → To-Be → implementation plan. EA: Zachman (6×6), TOGAF (ADM).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Adoption, processes, value</h3>
+    <ul>
+      <li>RFI (gather info) → <b>RFP</b> (requirements + evaluation criteria) → proposal → evaluation → contract.</li>
+      <li><b>BPR</b> = radical redesign; PI/Kaizen = incremental. Six Sigma <b>DMAIC</b>: Define, Measure, Analyze, Improve, Control.</li>
+      <li><b>CMMI:</b> 1 Initial, 2 Managed, 3 <b>Defined</b> (org standard process), 4 Quantitatively managed, 5 Optimizing.</li>
+      <li>ROI = (benefit − cost)/cost. NPV &gt; 0 → accept. Payback = cost / yearly benefit. TCO = all life-cycle costs.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Information systems and ITSM</h3>
+    <ul>
+      <li>TPS (transactions) · MIS (routine reports) · <b>DSS (what-if, semi-structured)</b> · EIS (executives). ERP, SCM (bullwhip), CRM, BI.</li>
+      <li><b>ITIL v3:</b> Strategy, Design, Transition, Operation, Continual Service Improvement. ITIL = guidance; <b>ISO/IEC 20000</b> = certifiable.</li>
+      <li><b>Incident</b> = restore service fast · <b>Problem</b> = find root cause · <b>Change</b> = controlled by CAB · CMDB = configuration items.</li>
+      <li><b>SLA</b> with customer · <b>OLA</b> between internal teams · <b>UC</b> with external supplier. 99.9% of 30 days = 43.2 min downtime.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Trends, ethics and IP</h3>
+    <ul>
+      <li>Hype cycle: trigger → peak → <b>trough</b> → slope → plateau. Chasm = early adopters → early majority.</li>
+      <li>Blockchain: hash-linked ledger, consensus (PoW, PoS), smart contracts; private = restricted members. Digital twin = live virtual copy.</li>
+      <li>EU AI Act: unacceptable (banned), high, <b>limited</b> (chatbots must disclose), minimal.</li>
+      <li><b>Copyright</b>: automatic, protects expression not ideas. Moral rights: disclosure, attribution, integrity (reproduction is economic). <b>Patent</b> ~20 years from filing. <b>Trademark</b> 10 years, renewable. <b>Trade secret</b>: no registration. <b>Escrow</b> = source code held by a third party.</li>
+      <li>ACM/IEEE code: <b>Public</b> interest first. Mason's PAPA: privacy, accuracy, property, accessibility. PH Data Privacy Act RA 10173.</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Project management basics</h3>
+    <ul>
+      <li>Project = temporary + unique. Triple constraint: scope, time, cost (+ quality).</li>
+      <li>PM authority: functional &lt; weak matrix &lt; balanced &lt; strong matrix &lt; <b>projectized</b>. PMO: supportive, controlling, directive.</li>
+      <li>Process groups: initiating, planning, executing, monitoring &amp; controlling, closing. <b>Charter</b> = authorizes the project.</li>
+      <li>RACI: exactly <b>one Accountable</b>. Stakeholder influence highest at the start; cost of change lowest at the start.</li>
+      <li>WBS: 100% rule, lowest level = work package. <b>Validate scope</b> = customer acceptance. Scope creep (uncontrolled) vs gold plating (extras by team).</li>
+      <li>Dependencies FS, SS, FF, SF. <b>Crashing</b> = add resources (cost ↑). <b>Fast tracking</b> = overlap tasks (risk ↑).</li>
+    </ul>
+  </div>
+
+  <div class="box"><h3>Quality, risk, people</h3>
+    <ul>
+      <li><b>QA</b> = process (audits). <b>QC</b> = product (inspection, testing).</li>
+      <li>Cost of quality: conformance = <b>prevention</b> (training) + <b>appraisal</b> (testing); nonconformance = <b>internal failure</b> (rework) + <b>external failure</b> (warranty, complaints).</li>
+      <li>7 tools: fishbone (causes), flowchart, check sheet, <b>Pareto</b> (80/20), histogram, <b>control chart</b> (rule of seven), scatter (correlation).</li>
+      <li>Threats: avoid, transfer, mitigate, accept, escalate. Opportunities: exploit, share, enhance, accept. <b>Delphi</b> = anonymous experts.</li>
+      <li>Tuckman: forming, <b>storming</b>, norming, performing, adjourning. Best conflict style: <b>collaborate</b>. Herzberg: salary = hygiene; recognition = motivator.</li>
+      <li>Networks: <b>wheel</b> fast for simple tasks, centralized, low satisfaction · chain sequential · <b>all-channel</b> decentralized, high satisfaction.</li>
+      <li>Charts: line = over time · bar = compare · <b>pie = share only (no cause)</b> · histogram = distribution · scatter = correlation · radar = balance.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ================= FORMULAS ================= -->
+<div class="page">
+<h2 class="mod mx"><span class="pill">All</span> Every formula, with a worked number <small>3 minutes</small></h2>
+<div class="cols">
+  <div class="box m3"><h3>Availability and performance</h3>
+    <table>
+      <tr><td>Availability</td><td>MTBF / (MTBF + MTTR)</td><td class="n">100,000/100,001 = <b>99.999%</b></td></tr>
+      <tr><td>Series</td><td>A1 × A2</td><td class="n">0.99 × 0.99 = 98.01%</td></tr>
+      <tr><td>Parallel</td><td>1 − (1−A1)(1−A2)</td><td class="n">two 99% → 99.99%</td></tr>
+      <tr><td>Little's law</td><td>Users = TPS × (R + Z)</td><td class="n">300 users, 60 TPS, R 3 s → interval 5 s, <b>think 2 s</b></td></tr>
+      <tr><td>Cache EAT</td><td>h·Tc + (1−h)·Tm</td><td class="n">0.95×20 + 0.05×200 = 29 ns</td></tr>
+    </table>
+    <p class="muted">Nines per year: 99.9% ≈ 8.76 h · 99.99% ≈ 52.6 min · 99.999% ≈ 5.26 min.</p>
+  </div>
+
+  <div class="box m3"><h3>Networks and security</h3>
+    <table>
+      <tr><td>Hosts per subnet</td><td>2<sup>host bits</sup> − 2</td><td class="n">/24 254 · /25 126 · /26 62 · /27 30 · /28 14</td></tr>
+      <tr><td>Network address</td><td>block = 256 − mask octet</td><td class="n">.70/27 → block 32 → <b>.64</b> (bcast .95)</td></tr>
+      <tr><td>Symmetric keys</td><td>n(n−1)/2</td><td class="n">50 users → 1,225</td></tr>
+      <tr><td>Public keys</td><td>2n</td><td class="n">50 users → 100</td></tr>
+      <tr><td>SLE / ALE</td><td>AV × EF; SLE × ARO</td><td class="n">500k × 0.4 = 200k; × 0.5 = <b>100k/yr</b></td></tr>
+    </table>
+  </div>
+
+  <div class="box m3"><h3>CPU scheduling (all arrive at 0)</h3>
+    <p>Bursts P1 24, P2 3, P3 3. <b>FCFS</b> waits 0, 24, 27 → avg 17. <b>SJF</b> order P2, P3, P1 → 0, 3, 6 → avg 3. <b>RR q=4</b> → 6, 4, 7 → avg 5.67.</p>
+    <p>Waiting = finish − arrival − burst. HRN priority = (wait + service) / service.</p>
+    <p>Pages 1 2 3 4 1 2 5 1 2 3 4 5, 3 frames: FIFO 9 faults, LRU 10, OPT 7. FIFO with 4 frames: 10 (Belady).</p>
+  </div>
+
+  <div class="box m1"><h3>Software</h3>
+    <table>
+      <tr><td>Cyclomatic complexity</td><td>E − N + 2 = decisions + 1</td><td class="n">9 edges, 7 nodes → 4</td></tr>
+      <tr><td>Binary tree leaves</td><td>n0 = n2 + 1</td><td class="n">10 two-child nodes → 11</td></tr>
+      <tr><td>Binary search max</td><td>⌊log<sub>2</sub> n⌋ + 1</td><td class="n">1,000 → 10</td></tr>
+      <tr><td>Precision / recall</td><td>TP/(TP+FP); TP/(TP+FN)</td><td class="n">40 of 50 flagged, 80 real → 0.8 / 0.5</td></tr>
+    </table>
+  </div>
+
+  <div class="box m2"><h3>Data</h3>
+    <table>
+      <tr><td>Support</td><td>both / all</td><td class="n">20 / 200 = 0.10</td></tr>
+      <tr><td>Confidence</td><td>both / with A</td><td class="n">20 / 50 = 0.40</td></tr>
+      <tr><td>Lift</td><td>confidence / P(B)</td><td class="n">0.40 / 0.20 = <b>2.0</b></td></tr>
+      <tr><td>Min-max</td><td>(x−min)/(max−min)</td><td class="n">(70−50)/50 = 0.4</td></tr>
+      <tr><td>Z-score</td><td>(x−mean)/sd</td><td class="n">(70−60)/5 = 2</td></tr>
+    </table>
+  </div>
+
+  <div class="box m4"><h3>Earned value</h3>
+    <table>
+      <tr><td>SV = EV − PV</td><td>&lt; 0 behind schedule</td></tr>
+      <tr><td>CV = EV − AC</td><td>&lt; 0 over budget</td></tr>
+      <tr><td>SPI = EV / PV</td><td>&lt; 1 behind</td></tr>
+      <tr><td>CPI = EV / AC</td><td>&lt; 1 over budget</td></tr>
+      <tr><td>EAC = BAC / CPI</td><td>ETC = EAC − AC · VAC = BAC − EAC</td></tr>
+      <tr><td>TCPI = (BAC−EV)/(BAC−AC)</td><td>efficiency needed for the rest</td></tr>
+    </table>
+    <p><b>Example:</b> BAC 1,000,000; PV 400k; EV 300k; AC 350k → SV −100k, SPI 0.75, CV −50k, CPI 0.857, EAC ≈ 1,166,667, VAC ≈ −166,667, TCPI ≈ 1.08. Behind schedule and over budget.</p>
+    <p class="trap"><b>Trap:</b> every formula starts with EV. Minus = variance, divide = index.</p>
+  </div>
+
+  <div class="box m4"><h3>Schedule and cost</h3>
+    <table>
+      <tr><td>PERT</td><td>(O + 4M + P) / 6; σ = (P − O)/6</td><td class="n">4, 7, 16 → 8 days, σ 2</td></tr>
+      <tr><td>Total float</td><td>LS − ES = LF − EF</td><td class="n">critical path float = 0</td></tr>
+      <tr><td>Channels</td><td>n(n−1)/2</td><td class="n">8 → 28; 12 → 66</td></tr>
+      <tr><td>EMV</td><td>probability × impact</td><td class="n">0.4×(−50k) + 0.1×100k = −10k</td></tr>
+      <tr><td>Payback</td><td>cost / yearly benefit</td><td class="n">600k / 150k = 4 yrs</td></tr>
+    </table>
+    <p><b>CPM:</b> forward pass takes the <b>largest</b> EF at a merge; backward pass takes the <b>smallest</b> LS at a split. Critical path = longest path. A(4) → B(6) → D(5) → G(2) → H(4) = 21 days.</p>
+  </div>
+</div>
+</div>
+
+<!-- ================= CODE + SQL ================= -->
+<div class="page">
+<h2 class="mod mx"><span class="pill">All</span> Code and SQL to write from memory <small>2 minutes</small></h2>
+<div class="cols">
+  <div class="box m2"><h3>SQL: groups, joins, subqueries</h3>
+<pre>-- members with more than 3 loans in Oct 2026
+SELECT m.member_id, m.name, COUNT(*) AS cnt
+FROM member m JOIN loan l ON l.member_id = m.member_id
+WHERE l.loan_date &gt;= DATE '2026-10-01'
+  AND l.loan_date &lt;  DATE '2026-11-01'
+GROUP BY m.member_id, m.name
+HAVING COUNT(*) &gt; 3
+ORDER BY cnt DESC;
+
+-- rows with no match (never borrowed)
+SELECT b.title FROM book b
+WHERE NOT EXISTS (SELECT 1 FROM loan l WHERE l.book_id = b.book_id);
+
+-- above own department's average (correlated)
+SELECT e.name FROM emp e
+WHERE e.salary &gt; (SELECT AVG(salary) FROM emp x
+                  WHERE x.dept_id = e.dept_id);
+
+-- NULL check: never "= NULL"
+WHERE return_date IS NULL</pre>
+  </div>
+
+  <div class="box m2"><h3>SQL: DDL and DCL</h3>
+<pre>CREATE TABLE section (
+  section_id  INT PRIMARY KEY,
+  course_code CHAR(6) NOT NULL,
+  capacity    INT DEFAULT 40 CHECK (capacity &gt; 0),
+  FOREIGN KEY (course_code) REFERENCES course(course_code)
+    ON DELETE CASCADE
+);
+GRANT SELECT, INSERT ON section TO registrar;
+REVOKE INSERT ON section FROM registrar;</pre>
+  </div>
+
+  <div class="box m1"><h3>Binary search (Python)</h3>
+<pre>def search(a, key):
+    low, high = 0, len(a) - 1
+    while low &lt;= high:
+        mid = (low + high) // 2
+        if a[mid] == key: return mid
+        if a[mid] &lt; key: low = mid + 1
+        else: high = mid - 1
+    return -1</pre>
+  </div>
+
+  <div class="box m1"><h3>Doubly linked list</h3>
+<pre>delete(x):                 insert n right of p:
+  x.llink.rlink = x.rlink    n.llink = p
+  x.rlink.llink = x.llink    n.rlink = p.rlink
+  free(x)                    p.rlink.llink = n
+                             p.rlink = n   // last</pre>
+  </div>
+
+  <div class="box m1"><h3>Singleton and Strategy (Java)</h3>
+<pre>class Config {
+  private static Config inst;
+  private Config() {}
+  static synchronized Config get() {
+    if (inst == null) inst = new Config();
+    return inst;
+  }
+}
+interface Pay { boolean pay(int amt); }
+class Card implements Pay { public boolean pay(int a){ return true; } }
+class Checkout { Pay p; void set(Pay x){ p = x; } }</pre>
+  </div>
+
+  <div class="box m3"><h3>Secure query and TCP client (Java)</h3>
+<pre>PreparedStatement ps = con.prepareStatement(
+  "SELECT * FROM users WHERE id = ?");
+ps.setString(1, id);              // stops SQL injection
+
+Socket s = new Socket("10.0.0.15", 7000);
+s.setSoTimeout(30000);            // milliseconds
+BufferedReader in = new BufferedReader(
+  new InputStreamReader(s.getInputStream()));
+// ... finally { if (s != null) s.close(); }</pre>
+  </div>
+
+  <div class="box m1"><h3>Linux and Git</h3>
+<pre>chmod 754 f   # rwx r-x r--   (r4 w2 x1)
+tail -n 50 -f app.log ; grep -c "ERROR" app.log
+ps -ef | grep java ; kill -9 PID ; df -h
+git checkout -b fix ; git add . ; git commit -m "msg"
+git push -u origin fix ; git pull   # = fetch + merge</pre>
+  </div>
+
+  <div class="box"><h3>Last look before you go in</h3>
+    <ul>
+      <li>Cohesion best = <b>functional</b>; coupling best = <b>data</b>.</li>
+      <li>Composition ◆ dies with the whole; aggregation ◇ doesn't.</li>
+      <li>2NF partial, 3NF transitive. HAVING for groups. NOT IN + NULL = nothing.</li>
+      <li>REDO committed, UNDO uncommitted. Differential = full + last one.</li>
+      <li>Sign with <b>your private</b> key; encrypt with <b>their public</b> key.</li>
+      <li>MAC labels; RBAC roles; DAC owner. RTO 0 + RPO 0 = mirror site.</li>
+      <li>CPI = EV/AC. Critical path = longest. Crashing costs money; fast tracking adds risk.</li>
+      <li>Written answers: <b>never blank</b>, numbered points, exact terms.</li>
+    </ul>
+  </div>
+</div>
+<p class="foot">Independent reviewer, not affiliated with IITP, KPC or TOPCIT. Full lessons, practice questions and drills: mynameisrinax.github.io/topcit-reviewer</p>
+</div>
+
+<script>
+  // Page numbers in each sheet's footer.
+  var pages = document.querySelectorAll('.page');
+  pages.forEach(function (p, i) {
+    var f = document.createElement('div');
+    f.className = 'pn';
+    f.innerHTML = '<span>TOPCIT quick review</span><span>' + (i + 1) + ' / ' + pages.length + '</span>';
+    p.appendChild(f);
+  });
+</script>
+</body>
+</html>

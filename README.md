@@ -14,6 +14,7 @@ A free reviewer for the **TOPCIT** (Test of Practical Competency in IT) periodic
 | **Mock exam** | 40 questions in 60 minutes, split like the real exam, with a projected score and level |
 | **Drills** | 32 written and hands-on scenarios (SQL, ERD, normalization, code, pseudocode, UML, CPM, EVM, availability, subnetting, secure coding) with model answers and a scoring checklist for partial credit |
 | **Flashcards** | Every key term from the lessons (on the Lessons page): random, by module, terms from your mistakes, and a "still learning" deck |
+| **Quick review PDF** | `TOPCIT-Quick-Review.pdf`: 8 pages you can read in 30 minutes (built from `tools/quick-review.html`) |
 | **Cheat sheet** | Formulas and must-know lists for all four modules (linked from Practice and the Exam guide) |
 
 Why drills matter: in TOPCIT, descriptive and performance questions are **69%** of the score and are graded with partial credit.
